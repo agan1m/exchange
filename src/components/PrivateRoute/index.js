@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
+import {Redirect, Switch, Route} from 'react-router-dom'
 
+import Home from '../Home'
 
 class PrivateRoute extends Component {
-    
+    state = {
+        isAuth: true
+    }
     render() {
+        const {isAuth} = this.state
+        if(!isAuth) return <Redirect to='/login'/>
         return (
-            <h1>111</h1>
+            <Route exact path='/' component={Home}/>
         );
     }
 }
